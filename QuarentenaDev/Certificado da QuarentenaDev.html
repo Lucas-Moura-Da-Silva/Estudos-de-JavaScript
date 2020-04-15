@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Certificado</title>
+        <style>
+            * {
+                font-family: monospace;
+                max-width: 100%;
+                box-sizing: border-box;
+                
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                display: flex;
+                padding: 1em;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                overflow: auto;
+                
+                background-color: rgb(91, 194, 212);
+            }
+
+            body {
+                width: 25em;
+                
+                max-width: 90%;
+                
+                font-size: 1.5em;
+                padding: 1em;
+                
+                border: 1px solid lightgrey;
+                box-shadow: 2px 2px 5px 0px rgba(0,0,0,.25);
+                background: white;
+            }
+
+            html:not(.paginaCertificado) h1 {
+                margin-top:1em;
+                margin-bottom:0;
+            }
+
+            html:not(.paginaCertificado) strong {
+                display: inline-block;
+                padding: 0.3125em 0.3125em 0.125em;
+                
+                font-family: Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: .52em;
+                margin-bottom: 2em;
+                text-transform: uppercase;
+                letter-spacing: .22em;
+                
+                color: #fff;
+                background: #fda53d;
+            }
+
+            html:not(.paginaCertificado) label {
+                position: absolute;
+                display: block;
+                font-size: 1em;
+                line-height: 2em;
+            }
+
+            html:not(.paginaCertificado) input {
+                display: block;
+                padding: .5em 1em .5em 4em;
+                
+                font-size: 1em;
+                font-weight: lighter;
+                font-family: inherit;
+                
+                border: none;
+                border-bottom: 1px solid rgba(0,0,0,.25);
+                    
+                transition: all .2s ease, background-size .45s ease-out;
+                background: linear-gradient(
+                    rgba(0,0,0,.25),
+                    rgba(0,0,0,.25)
+                ) no-repeat 0% 100% / 0 0;
+            }
+
+            html:not(.paginaCertificado) input:focus {
+                outline: none;
+                background: linear-gradient(
+                    rgba(0,0,0,.25),
+                    rgba(0,0,0,.25)
+                ) no-repeat 0% 100% / 100% 1px;
+            }
+
+            html:not(.paginaCertificado) button {
+                border: none;
+                padding: 1em;
+                margin-top: 3em;
+                    
+                font-size: .75em;
+                text-transform: uppercase;
+
+                border: 2px solid rgba(0, 0, 0, .15);
+                background-color: #27bdc1;
+                color: white;
+            }
+
+            html:not(.paginaCertificado) button:not(:disabled) {
+                cursor: pointer;
+            }
+
+            html:not(.paginaCertificado) button:hover:not(:disabled) {
+                background-image: linear-gradient(
+                rgba(255,255,255,0.25),
+                rgba(255,255,255,0.25)
+                );
+
+            }
+
+            html:not(.paginaCertificado) button:active:not(:disabled) {
+                background-image: linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.15)
+                );
+                transform: scale(0.98)
+            }
+
+            html:not(.paginaCertificado) button:disabled {
+                background-color: #cacaca;
+            }
+
+
+            html.paginaCertificado {
+                background: whitesmoke;
+            }
+
+
+            html.paginaCertificado body {
+                padding: 0;
+                padding-bottom: 2.35em;
+                max-height: 190%;
+                width: 25.7em;
+                height: 29em;
+                
+                font-size: 3.5vmin;
+                
+                border: none;
+            }
+
+            @media print {
+                @page {
+                    size: landscape;
+                    margin: 0;
+                    size: A4 landscape;
+                }
+                
+                html.paginaCertificado {
+                    background: none;
+                }
+                
+                html.paginaCertificado body {
+                    max-width: 2048px;
+                    max-height: 1515px;
+                    font-size: 3.5vw;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1> Gerador de Certificado </h1>
+        <strong> #quarentenaDev </strong>
+
+        <label for="inputNome"> Nome: </label>
+        <input id="inputNome" placeholder="Seu Nome Completo">
+
+        <button id="botaoGerar" onclick="gerar()"> 
+        Gerar certificado 
+        </button>
+
+        <script src="https://caelum.github.io/quarentenadev/libCertificado.js"></script>
+    </body>
+    <script>
+        function gerar(){
+            contador = 0
+            while(contador < 1000000){
+                contador = ++contador
+                htmldocertificado = emitirCertificado(inputNome.value)
+            }
+            
+            // colocar todas as aulas no codepen
+            // colocar os links das aulas do codepen em ordem (da primeira até a ultima aula)
+            listalink = [
+                /*aula04*/"https://codepen.io/LucasSilva10/pen/GRpgeyM",
+                /*aula05*/"https://codepen.io/LucasSilva10/pen/mdeyoLB",
+                /*aula06*/"https://codepen.io/LucasSilva10/pen/xxwbBeE",
+                /*aula07*/"https://codepen.io/LucasSilva10/details/GRpgeVd",
+                /*aula08*/"https://codepen.io/LucasSilva10/details/yLYyrBB",
+                /*aula09*/"https://codepen.io/LucasSilva10/pen/PoPwpKg?editors=0010",
+                /*Desafio#03.1*/"https://codepen.io/LucasSilva10/pen/VwvYNZM",
+                /*Desafio#03.2*/"https://codepen.io/LucasSilva10/pen/zYvxXYq",
+                /*Desafio#03.3*/"https://codepen.io/LucasSilva10/details/NWGPmWo",
+                /*Desafio#05*/"https://codepen.io/LucasSilva10/pen/wvKBZBR",
+                /*Desafio#06*/"https://codepen.io/LucasSilva10/details/mdeygJL",
+                /*Desafio#08.1*/"https://codepen.io/LucasSilva10/pen/pojvBjz",
+                /*Desafio#08.2*/"https://codepen.io/LucasSilva10/pen/ExVaJVg",
+                /*Desafio#08.3*/"https://codepen.io/LucasSilva10/pen/VwvYNvr",
+                /*Pokebola*/"https://codepen.io/LucasSilva10/details/zYvxXrK",
+                /*Fantasma*/"https://codepen.io/LucasSilva10/pen/GRpgaPZ"
+            ]
+
+            //colocar os nomes das aulas em ordem ( da primeira até a ultima aula)
+            listadeaulas = [
+                /*aula04*/"Calculo do preço do transporte Pt.1",
+                /*aula05*/"Curriculo",
+                /*aula06*/"Ficha médica",
+                /*aula07*/"Sorteio de corrida grátis",
+                /*aula08*/"Botão de like",
+                /*aula09*/"Calculo do preço do transporte Pt.2",
+                /*Desafio#03.1*/"Calculo do IMC",
+                /*Desafio#03.2*/"Quebra de linha",
+                /*Desafio#03.3*/"Gasto de gasolina",
+                /*Desafio#05*/"Exercícios feitos",
+                /*Desafio#06*/"Mês",
+                /*Desafio#08.1*/"Quantidades de Olimpíadas",
+                /*Desafio#08.2*/"Números de 0 a 500",
+                /*Desafio#08.3*/"Números pares",
+                /*Pokebola*/"Pixel-Art/Pokebola",
+                /**/"Pixel-Art/Fantasma"
+            ]
+
+            contalink = 0
+            listalinkcomhtml = ''
+            while(contalink < 16){
+                link = listalink[contalink]
+                aula = listadeaulas[contalink]
+                listalinkcomhtml = listalinkcomhtml + `<li>${aula}:</br><a href="${link}" target="_blank" >${link}</a></li>` 
+                contalink = 1 + contalink
+            }
+
+            document.body.innerHTML = `${htmldocertificado} + 
+            <ol>
+                ${listalinkcomhtml}
+            </ol>`
+        }
+    </script>
+</html>
